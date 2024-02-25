@@ -1,0 +1,161 @@
+html, body{ height:100%; }
+body{ 
+    font:16px Arial;
+    display: flex; 
+    flex-flow: column;
+    align-items: center;
+    justify-content: center; 
+}
+.multiRange{ margin:3em 0; width:40%; min-width:150px; 
+    &.type1{
+        $C: #EC5564;
+        .multiRange__range{ 
+            color:#EEE; 
+            transition:50ms;
+            
+            &:nth-child(2){ color:$C; }
+            
+            .multiRange__handle{ 
+                box-shadow:none; 
+                background:$C;
+                &__value{
+                    background:$C;
+                    color:white;
+                    &::after{
+                        border-color:$C transparent transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//// COMPONENT //////////////////////////////
+
+body.multiRange-grabbing{ cursor:grabbing; }
+.multiRange{
+    $height: 12px;
+    
+    // can be used to set automatic color to each range slice
+    @mixin rangesColors( $size:6 ){
+        @for $i from 1 through $size{
+            &:nth-child(#{$i}){ 
+                color:hsl($i * 35, 70%, 66%);
+            }
+        }
+    }
+    
+    user-select:none;
+
+    &__rangeWrap{
+        height: $height;
+        background:#E8E8E8;
+        border-radius:3px;
+        position:relative;
+        z-index:5;
+    }
+    
+    &__range{
+        @include rangesColors(5);
+        
+        height: 100%;
+        position:absolute;
+        right:0;
+        background:currentColor; 
+
+        // hide the first handle
+        &:first-child{
+            > .multiRange__handle{ display:none; }
+        }
+        
+        // a class is added when a handle is grabbed (mousedown)
+        &.grabbed{
+            > .handle{ background:black; }
+        }
+
+        .multiRange__handle{ 
+            $out: -3px;
+            width: 2px;
+            
+            position: absolute;
+            top: $out;
+            bottom: $out;
+            left: -1px;
+            
+            cursor: grab;
+            background: currentColor; 
+            box-shadow: 1px 0 white, -1px 0 white;
+            transition: .2s;
+            
+            &:active{ cursor:inherit; }
+            
+            &__value{
+                $C: #333;
+                position: absolute;
+                transform: translate(-50%, -6px);
+                min-width:10px;
+                background: $C;
+                color: white;
+                padding: 2px 6px;
+                top: -100%;
+                left: 0;
+                white-space: nowrap;
+                font-size: 11px;
+                text-align:center;
+                border-radius:4px;
+                cursor:default;
+              //  pointer-events:none;
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    bottom: -3px;
+                    border-color: $C transparent transparent;
+                    border-style: solid;
+                    border-width: 3px 4px;
+                    transform: translate(-50%, 50%);
+                    color: $C;
+                    font-size: 15px;
+                }
+                
+                &--bottom{
+                    &::after{
+                    }
+                }
+            }
+        }
+        
+        &:hover{
+         //   box-shadow:0 0 0 1000px rgba(black, .1) inset;
+        }
+    }
+    
+    &__ticks{
+        display:flex;
+        justify-content: space-between;
+        height: 6px;
+        margin: 2px 0 0 0;
+        font:10px Arial;
+        cursor:default;
+        
+        > div{
+            height:100%;
+            width:1px;
+            background:#DDD;
+            color: #888;
+
+            &:nth-child(5n - 4){
+                height: 200%;
+                &::before{
+                    display:block;
+
+                    content: attr(data-value);
+                    transform:translate(-50%, 100%);
+                    text-align: center;
+                    width:40px;
+                }
+            }
+        }
+    }
+}

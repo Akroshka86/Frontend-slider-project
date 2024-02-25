@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
+/*Регистрация*/
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 75px;
+}
+
+.multiRange {
+  margin: 15% 0 0 0;
+  width: 70%;
+  min-width: 150px;
+  display: inline-block;
+}
+
+.multiRange.type1 .multiRange__range {
+  color: #EEE;
+  transition: 50ms;
+}
+.multiRange.type1 .multiRange__range:nth-child(2) {
+  color: #009fff;
+}
+
+.multiRange.type1 .multiRange__range .multiRange__handle {
+  box-shadow: none;
+  background: #009fff;
+}
+
+.multiRange.type1 .multiRange__range .multiRange__handle__value {
+  background: #009fff;
+  color: white;
+}
+.multiRange.type1 .multiRange__range .multiRange__handle__value::after {
+  border-color: #009fff transparent transparent;
+}
+
+body.multiRange-grabbing {
+  cursor: grabbing;
+}
+
+.multiRange {
+  user-select: none;
+}
+
+
+.multiRange__rangeWrap {
+  height: 12px;
+  background: white;
+  position: relative;
+  z-index: 5;
+}
+
+.multiRange__range {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background: currentColor;
+}
+.multiRange .multiRange__range {
+  color: #EEE;
+  transition: 50ms;
+}
+.multiRange .multiRange__range:nth-child(2) {
+  color: #009fff;
+}
+
+.multiRange .multiRange__range .multiRange__handle {
+  box-shadow: none;
+  background: #009fff;
+}
+
+.multiRange .multiRange__range .multiRange__handle__value {
+  background: #009fff;
+  color: white;
+}
+.multiRange .multiRange__range .multiRange__handle__value::after {
+  border-color: #009fff transparent transparent;
+}
+
+
+.multiRange__range:first-child > .multiRange__handle {
+  display: none;
+}
+
+
+.multiRange__range .multiRange__handle {
+  width: 18px;
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  left: -9px;
+  cursor: grab;
+  background: currentColor;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.multiRange__range .multiRange__handle:active {
+  cursor: inherit;
+}
+
+
+
+.multiRange__range .multiRange__handle__value {
+  position: absolute;
+  transform: translate(-10px, -6px);
+  min-width: 10px;
+  background: #333;
+  color: white;
+  padding: 2px 6px;
+  top: -100%;
+  left: 0;
+  white-space: nowrap;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: default;
+}
+
+
+
+.multiRange__range .multiRange__handle__value::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  border-color: #333 transparent transparent;
+  border-style: solid;
+  border-width: 3px 4px;
+  transform: translate(-50%, 50%);
+  color: #333;
+  font-size: 15px;
+}
+.multiRange__ticks {
+  display: flex;
+  justify-content: space-between;
+  height: 6px;
+  margin: 2px 0 0 0;
+  font-size: 10px;
+  cursor: default;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.multiRange__ticks > div {
+  width: 1px;
+  background: #DDD;
+  color: #888;
+}
+.multiRange__ticks > div:nth-child(5n-4) {
+  height: 200%;
+}
+.multiRange__ticks > div::before {
+  display: block;
+  content: attr(data-value);
+  transform: translate(-50%, 100%);
+  text-align: center;
+  width: 40px;
+}
+
+
+.multiRange__ticks > div:last-child::before {
+  display: block;
+  content: attr(data-value);
+  transform: translate(-50%, 100%);
+  text-align: center;
+  width: 40px;
+}
+
+
+.multiRange__handle::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+.month::before {
+  height: 12px;
+}
+
+.content {
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.buttons {
+  margin-right: 10px;
+}
+.period-buttons {
+  margin-bottom: 10px;
+}
+
+
+
+
+#updateButton, #seasonButton, #monthButton{
+  background-color: #009fff; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 8px;
+  cursor: pointer; 
+  transition: background-color 0.5s;
+}
+
+#updateButton:hover, #seasonButton:hover, #monthButton:hover{
+  background-color: #1388d1;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.menu div {
+  display: flex;
+  align-items: center; /* Выравнивание элементов по вертикали */
+  margin-bottom: 25px; /* Расстояние между элементами */
+}
+
+.menu div label {
+  width: 200px; /* Ширина метки */
+  margin-right: 10px; /* Расстояние между меткой и полем ввода */
+}
+
+.menu div input[type="number"] {
+  padding: 8px; /* Задаем отступы внутри поля ввода */
+  border: 1px solid #ccc; /* Добавляем границу */
+  border-radius: 4px; /* Закругляем углы */
+  font-size: 14px; /* Устанавливаем размер шрифта */
+  width: 100px; /* Задаем ширину поля ввода */
+}
+
+
+

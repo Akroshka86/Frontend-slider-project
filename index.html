@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Годовой слайдер</title>
+  <link rel="stylesheet" href="source/css/style.css"> 
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Период работы</h1>
+  <div class="period-buttons">
+    <button id="seasonButton">Все года</button>
+    <button id="monthButton">Месяцы</button>
+  </div>
+
+  <div class="menu">
+    <div class="menuMinInput">
+      <label for="minInput">Минимальное значение:</label>
+      <input type="number" id="minInput" name="minInput" value="2000">
+    </div>
+    <div class="menuMaxInput">
+      <label for="maxInput">Максимальное значение:</label>
+    <input type="number" id="maxInput" name="maxInput" value="2024">
+    </div>
+    <div class="menuNumber">
+      <label for="maxInput">Период:</label>
+      <input type="number" id="rangeInput1" placeholder="Range 1" value="2001">
+      <input type="number" id="rangeInput2" placeholder="Range 2" value="2023">
+    </div>
+    <button id="updateButton">Обновить период!</button>
+  </div>
+
+  <div class="content">
+    <component class='multiRange hidden'></component>
+    <component class='multiRange type1 hidden'></component>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
