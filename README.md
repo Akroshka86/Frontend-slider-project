@@ -46,14 +46,14 @@
 ## Запуск проекта
 
 1. Клонируйте репозиторий и перейдите в директорию проекта:  
-   git clone <URL репозитория>
-   cd homework-frontend
+   - git clone <URL репозитория>
+   - cd homework-frontend
 2. Установите зависимости и запустите клиентскую часть:
-   npm install
-   npm start
+   - npm install
+   - npm start
 3. Перейдите в подкаталог сервера и запустите backend:
-   cd..
-   cd homework-backend
-   npm install
-   npm start
+   - cd..
+   - cd homework-backend
+   - npm install
+   - npm start
 4. Откройте браузер и перейдите по адресу: http://localhost:5173
