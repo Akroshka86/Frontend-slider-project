@@ -50,10 +50,10 @@
    - cd homework-frontend
 2. Установите зависимости и запустите клиентскую часть:
    - npm install
-   - npm start
+   - npm run start
 3. Перейдите в подкаталог сервера и запустите backend:
    - cd..
    - cd homework-backend
    - npm install
-   - npm start
+   - npm run start
 4. Откройте браузер и перейдите по адресу: http://localhost:5173
